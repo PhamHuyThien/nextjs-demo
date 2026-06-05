@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rancher</title>
+    <link rel="icon" type="image/png" href="/rancher/images/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<body>
+<div class="main flex h-screen">
+    <div class="nav-bar w-[75px] flex flex-col items-center bg-[#141419] border-1 border-[#4a4b52] h-screen text-white cursor-pointer">
+        <div class="py-4"><i class="fa-solid fa-bars text-[22px]"></i></div>
+        <div class="mt-3 bg-[#297db4] w-full text-center h-[50px] flex items-center justify-center ">
+            <i class="fa-solid fa-house"></i>
+        </div>
+        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+            <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
+                EYT
+            </div>
+        </div>
+        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+            <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
+                EPT
+            </div>
+        </div>
+        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+            <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
+                EYT
+            </div>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-end text-white w-full">
+            <div class="w-full flex flex-col items-center mb-5">
+                <div class="border-t border-[#4a4b52] w-[70%] mb-5"></div>
+                <div class="flex items-center justify-center text-[24px] text-[#3d98d3] cursor-pointer hover:text-white hover:bg-[#3d98d3] w-full h-[45px]">
+                    <i class="fa-brands fa-houzz"></i>
+                </div>
+                <div class="flex items-center justify-center text-[24px] text-[#3d98d3] cursor-pointer hover:text-white hover:bg-[#3d98d3] w-full h-[45px]">
+                    <i class="fa-solid fa-angles-right"></i>
+                </div>
+            </div>
+            <div class="w-full flex flex-col items-center mb-5">
+                <div class="border-t border-[#4a4b52] w-[70%] mb-5"></div>
+                <div class="flex items-center justify-center text-[24px] text-[#3d98d3] cursor-pointer hover:text-white hover:bg-[#3d98d3] w-full h-[45px]">
+                    <i class="fa-brands fa-houzz"></i>
+                </div>
+                <div class="flex items-center justify-center text-[24px] text-[#3d98d3] cursor-pointer hover:text-white hover:bg-[#3d98d3] w-full h-[45px]">
+                    <i class="fa-solid fa-angles-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-[50px] flex items-center justify-center">
+            <span class="text-[12px] text-[#3d98d3] cursor-pointer hover:text-white hover:underline">v2.10.3</span>
+        </div>
+    </div>
+    <div class="h-screen w-full flex flex-col">
+        <div class="header h-[55px] bg-[#1b1c21] flex justify-between border-1 border-[#4a4b52]">
+            <div class="flex items-center px-5">
+                <img src="/rancher/images/rancher-logo.3680d0eb.svg" alt="rancher-logo" class="h-[20px] w-auto">
+            </div>
+            <div class="flex items-center px-3 text-white gap-6">
+                <i class="fa-solid fa-ellipsis-vertical text-[19px]"></i>
+                <img src="/rancher/images/user.png" alt="user" class="h-[38px] w-auto"/>
+            </div>
+        </div>
+        <div class="flex-1 main w-full h-full px-20 pt-5 bg-[#1b1c21]">
+            <div class="what-new flex items-center justify-between h-[50px] text-white text-[15px] bg-[#2a485c] px-4 border-l-5 border-[#297db4] mb-5">
+                <div class="">
+                    Learn more about the improvements and new capabilities in this version and read about the UI
+                    framework migration in 2.10
+                </div>
+                <div class="whitespace-nowrap hover:text-[#3d98d3] cursor-pointer hover:underline">
+                    What new v2.10.3
+                </div>
+            </div>
+            <div class="clusters flex text-white gap-4">
+                <div class="cluster flex-1">
+                    <div class="cluster-header flex items-center justify-between">
+                        <div class="cluster-info flex gap-3">
+                            <span>Clusters</span>
+                            <div class="rounded-full w-6 h-6 text-[15px] text-[#3d98d3] flex items-center justify-center text-center bg-[#3d98d326]">
+                                3
+                            </div>
+                        </div>
+                        <div class="cluster-tool flex justify-end gap-3">
+                            <button class="border-1 border-[#3d98d3] rounded-sm px-3 py-1 text-[14px] text-[#3d98d3] hover:text-white cursor-pointer">
+                                Manage
+                            </button>
+                            <button class="border-1 border-[#3d98d3] rounded-sm px-3 py-1 text-[14px] bg-[#3d98d3] cursor-pointer hover:bg-[#297db4]">
+                                Import Existing
+                            </button>
+                            <button class="border-1 border-[#3d98d3] rounded-sm px-3 py-1 text-[14px] bg-[#3d98d3] cursor-pointer hover:bg-[#297db4]">
+                                Create
+                            </button>
+                            <label>
+                                <input class="border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[14px] focus:border-[#3d98d3] outline-none"
+                                       placeholder="Filter" type="text"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="cluster-table mt-5">
+                        <table class="w-full table-auto text-left border-1 border-[#4a4b52] border-collapse">
+                            <thead class="border-b border-[#4a4b52]">
+                            <tr>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>State</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>Name</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>Provider</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">Distro</div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold">Kubernetes Version</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">Architecture</div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>CPU</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>Memory</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-1">
+                                    <div class="text-[14px] font-semibold flex items-center gap-2">
+                                        <span>Pods</span>
+                                        <i class="fa-solid fa-sort text-[#6c6c76] text-[13px]"></i>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="border-b border-[#4a4b52]">
+                                <td class="px-3 py-1">
+                                    <div class="text-[13px] text-[#5d995d] rounded-xl border-1 border-[#5d995d] text-center px-3 w-[70px]">
+                                        Active
+                                    </div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <a class="text-[#3d98d3] cursor-pointer hover:text-white hover:underline text-[14px]">epay-devtest</a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">Imported</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">RKE1</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">v1.32.3</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">-</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">160 cores</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">311 GiB</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">365/1100</div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-[#4a4b52]">
+                                <td class="px-3 py-1">
+                                    <div class="text-[13px] text-[#5d995d] rounded-xl border-1 border-[#5d995d] text-center px-3 w-[70px]">
+                                        Active
+                                    </div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <a class="text-[#3d98d3] cursor-pointer hover:text-white hover:underline text-[14px]">epay-devtest</a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">Imported</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">RKE1</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">v1.32.3</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">-</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">160 cores</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">311 GiB</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">365/1100</div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-[#4a4b52]">
+                                <td class="px-3 py-1">
+                                    <div class="text-[13px] text-[#5d995d] rounded-xl border-1 border-[#5d995d] text-center px-3 w-[70px]">
+                                        Active
+                                    </div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <a class="text-[#3d98d3] cursor-pointer hover:text-white hover:underline text-[14px]">epay-devtest</a>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">Imported</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">RKE1</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">v1.32.3</div>
+                                    <div class="text-[#6c6c76] text-[14px] font-normal">-</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">160 cores</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">311 GiB</div>
+                                </td>
+                                <td class="px-3 py-1">
+                                    <div class="text-[14px] font-normal">365/1100</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="links w-[23%] border-1 border-[#4a4b52]">
+                    <div class="text-white px-4 py-4 border-b-1 border-[#4a4b52]">Links</div>
+                    <div class="flex flex-col items-start justify-start px-4 py-4 gap-3">
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Docs</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Forums</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Slack</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">File an Issue</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Get Started</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Commercial Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

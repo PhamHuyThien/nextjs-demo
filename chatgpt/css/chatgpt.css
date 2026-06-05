@@ -1,0 +1,67 @@
+* {
+    color: #fff;
+}
+
+.nav {
+    /* Cho thanh cuộn đè lên nội dung, không chiếm chỗ */
+    scrollbar-gutter: stable both-edges; /* Hoặc bỏ để không chừa khoảng trống */
+}
+
+/* WebKit scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;  /* Track trong suốt */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(197, 197, 197, 0.9);
+}
+
+/*!* Nút mũi tên *!*/
+/*nav::-webkit-scrollbar-button {*/
+/*    background: #ddd;*/
+/*    height: 5px;*/
+/*    display: block;*/
+/*}*/
+
+/* Nút mũi tên khi hover */
+/*nav::-webkit-scrollbar-button:hover {*/
+/*    background: #aaa;*/
+/*}*/
+
+/* Nút mũi tên ở đầu (up) */
+/*nav::-webkit-scrollbar-button:single-button:decrement {*/
+/*    background: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><polygon points="5,2 2,8 8,8" fill="%23666"/></svg>') no-repeat center;*/
+/*}*/
+
+/*!* Nút mũi tên ở cuối (down) *!*/
+/*nav::-webkit-scrollbar-button:single-button:increment {*/
+/*    background: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><polygon points="2,2 8,2 5,8" fill="%23666"/></svg>') no-repeat center;*/
+/*}*/
+
+.chat-active {
+    background-color: #242424;
+}
+
+pre[class*="language-"] {
+    background: #161b22 !important;  /* Nền code block giống ChatGPT */
+    color: #e6edf3 !important;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    /*max-width: 100%; !* Responsive width *!*/
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
+    margin-right: 10px;
+}

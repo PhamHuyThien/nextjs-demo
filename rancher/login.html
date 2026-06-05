@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rancher</title>
+    <link rel="icon" type="image/png" href="/rancher/images/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+</head>
+<body>
+<div class="main w-full">
+    <div class="flex h-screen">
+        <div class="bg-black w-1/2">
+            <div class="flex justify-center items-center flex-col text-white h-screen">
+                <div class="font-normal">Howdy!</div>
+                <div class="text-[24px] mt-0 mb-0 leading-none">Welcome to Rancher</div>
+                <div class="text-center text-[#5d995d] text-[16px] leading-none py-5">You've been logged out of Rancher, however you may still be logged in to your single sign-on identity provider.</div>
+                <div>
+                    <button class="border border-[#3d98d3] hover:border-[#297db4] bg-[#3d98d3] px-4 py-2 rounded-sm cursor-pointer hover:bg-[#297db4] font-semibold text-[16px]">Log in with AzureAD</button>
+                </div>
+                <div class="mt-7"><a class="text-[14px] text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Use a local user</a></div>
+            </div>
+            <div class="fixed bottom-6 left-3 text-[#3d98d3]">
+                <div class="flex text-[14px] gap-1 hover:text-white cursor-pointer">
+                    <div class="">English</div>
+                    <div class="text-[12px]"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2">
+            <img alt="landscape" class="w-full h-full object-cover" src="/rancher/images/login-landscape.6e1253bb.svg"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
