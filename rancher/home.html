@@ -7,30 +7,31 @@
     <link rel="icon" type="image/png" href="/rancher/images/favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
 <div class="main flex h-screen">
-    <div class="nav-bar w-[75px] flex flex-col items-center bg-[#141419] border-1 border-[#4a4b52] h-screen text-white cursor-pointer">
-        <div class="py-4"><i class="fa-solid fa-bars text-[22px]"></i></div>
-        <div class="mt-3 bg-[#297db4] w-full text-center h-[50px] flex items-center justify-center ">
+    <div class="nav-bar w-[75px] flex flex-col items-center bg-[#141419] border-r-1 border-[#4a4b52] h-screen text-white cursor-pointer fixed">
+        <div id="menu-nav-bar" class="py-4 justify-center"><i class="fa-solid fa-bars text-[22px]"></i></div>
+        <div class="nav-bar-item mt-3 bg-[#297db4] w-full h-[50px] flex items-center justify-center ">
             <i class="fa-solid fa-house"></i>
         </div>
-        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+        <div class="nav-bar-item flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
             <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
                 EYT
             </div>
         </div>
-        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+        <div class="nav-bar-item flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
             <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
                 EPT
             </div>
         </div>
-        <div class="flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
+        <div class="nav-bar-item flex items-center justify-center w-full h-[50px] hover:bg-[#297db4]">
             <div class="bg-[#27292e] border-1 border-[#4a4b52] rounded-sm px-3 py-1 text-[13px] cursor-pointer font-semibold">
                 EYT
             </div>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-end text-white w-full">
+        <div class="nav-bar-item flex-1 flex flex-col items-center justify-end text-white w-full">
             <div class="w-full flex flex-col items-center mb-5">
                 <div class="border-t border-[#4a4b52] w-[70%] mb-5"></div>
                 <div class="flex items-center justify-center text-[24px] text-[#3d98d3] cursor-pointer hover:text-white hover:bg-[#3d98d3] w-full h-[45px]">
@@ -50,21 +51,39 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-[50px] flex items-center justify-center">
+        <div class="nav-bar-item w-full h-[50px] flex items-center justify-center">
             <span class="text-[12px] text-[#3d98d3] cursor-pointer hover:text-white hover:underline">v2.10.3</span>
         </div>
     </div>
     <div class="h-screen w-full flex flex-col">
-        <div class="header h-[55px] bg-[#1b1c21] flex justify-between border-1 border-[#4a4b52]">
+        <div class="header h-[55px] bg-[#1b1c21] flex justify-between border-b-1 border-[#4a4b52] fixed left-[75px] right-0">
             <div class="flex items-center px-5">
                 <img src="/rancher/images/rancher-logo.3680d0eb.svg" alt="rancher-logo" class="h-[20px] w-auto">
             </div>
-            <div class="flex items-center px-3 text-white gap-6">
-                <i class="fa-solid fa-ellipsis-vertical text-[19px]"></i>
-                <img src="/rancher/images/user.png" alt="user" class="h-[38px] w-auto"/>
+            <div class="flex items-center px-3 text-white gap-3">
+                <i class="fa-solid fa-ellipsis-vertical text-[19px] cursor-pointer px-5"></i>
+                <div class="relative">
+                    <img id="user" src="/rancher/images/user.png" alt="user" class="h-[38px] w-auto cursor-pointer"/>
+                    <div id="user-menu" class="absolute right-0 top-11 w-[200px] bg-[#1b1c21] hidden">
+                        <div class="border-1 border-[#4a4b52] text-white p-3 rounded-sm">
+                            <div class="flex gap-1">
+                                <i class="fa-solid fa-user"></i>
+                                <span class="text-[13px]">thienph@epayjsc.com</span>
+                            </div>
+                            <div class="text-[12px] pb-3 border-b-1 border-[#4a4b52] mb-5">Phạm Huy Thiên</div>
+                            <div class="flex flex-col justify-between items-left">
+                                <div class="text-[14px] cursor-pointer hover:bg-[#297db4] py-2 px-2">Preferences</div>
+                                <div class="text-[14px] cursor-pointer hover:bg-[#297db4] py-2 px-2">Account & API
+                                    Keys
+                                </div>
+                                <div class="text-[14px] cursor-pointer hover:bg-[#297db4] py-2 px-2">Log Out</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex-1 main w-full h-full px-20 pt-5 bg-[#1b1c21]">
+        <div class="flex-1 main w-auto h-full px-20 pt-5 bg-[#1b1c21] ml-[75px] mt-[55px]">
             <div class="what-new flex items-center justify-between h-[50px] text-white text-[15px] bg-[#2a485c] px-4 border-l-5 border-[#297db4] mb-5">
                 <div class="">
                     Learn more about the improvements and new capabilities in this version and read about the UI
@@ -235,17 +254,30 @@
                 <div class="links w-[23%] border-1 border-[#4a4b52]">
                     <div class="text-white px-4 py-4 border-b-1 border-[#4a4b52]">Links</div>
                     <div class="flex flex-col items-start justify-start px-4 py-4 gap-3">
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Docs</div>
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Forums</div>
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Slack</div>
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">File an Issue</div>
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Get Started</div>
-                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">Commercial Support</div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            Docs
+                        </div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            Forums
+                        </div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            Slack
+                        </div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            File an Issue
+                        </div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            Get Started
+                        </div>
+                        <div class="text-[14px] font-normal text-[#3d98d3] cursor-pointer hover:text-white hover:underline">
+                            Commercial Support
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="/rancher/js/home.js"></script>
 </body>
 </html>
