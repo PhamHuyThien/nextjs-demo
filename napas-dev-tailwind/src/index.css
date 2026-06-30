@@ -2,25 +2,55 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #00a0db;
-    --color-primary-foreground: #fff;
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-error: var(--error);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-border: var(--border);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-offset-background: var(--offset-background);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-background: var(--background);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
 }
 
 :root {
-    --bg: #fff;
+    --primary: #00a0db;
+    --secondary: #f1f5f9;
+    --primary-foreground: #fff;
+    --error: #dc2626;
+    --card-foreground: #020817;
+    --card: #fff;
     --border: #e2e8f0;
-    --border-focus: #00a0db;
-    --text-h1: #020817;
-    --text-h2: #64748b;
-    --btn-bg: #00a0db;
-    --btn-bg-hover:#00a0dbe6;
-    --btn-text: #fff;
+    --muted-foreground: #94a3b8;
+    --offset-background: #fff;
+    --ring: #00a0db;
+    --input: #e2e8f0;
+    --background: #fff;
+    --accent: #00a0db;
+    --accent-foreground: #fff;
 }
 
 .dark {
 
 }
 
-body {
+* {
     font-family: 'Inter', sans-serif;
+    border-color: var(--border);
+}
+
+body {
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
