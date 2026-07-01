@@ -2,6 +2,45 @@ import {useEffect, useRef, useState} from "react";
 import {useSetting} from "../../contexts/setting.context.jsx";
 import {Link, useNavigate} from "react-router";
 
+const headerLinkData = [
+    {
+        path: '/',
+        title: 'Trang chủ',
+        active: true,
+    },
+    {
+        path: '/product',
+        title: 'Sản phẩm của Napas',
+        active: false,
+    },
+    {
+        path: '#',
+        title: 'Liên hệ',
+        active: false,
+    }
+]
+
+export function HeaderLinkPC() {
+    const [link, setLink] = useState(() => [...headerLinkData]);
+
+    function onClickLink(link) {
+        setLink(l => l.map(l1 => ({...l1, active: l1.path === link.path})));
+    }
+
+    return <nav className="hidden md:flex flex-1 justify-center gap-6 text-sm min-w-0">
+        {
+            link.map((l, i) => <Link
+                className={`transition-colors duration-200 relative text-foreground font-semibold after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full ${l.active ? 'after:w-full' : 'after:w-0'}`}
+                onClick={() => onClickLink(l)}
+                to={l.path}
+                key={i}
+            >
+                {l.title}
+            </Link>)
+        }
+    </nav>
+}
+
 export default function UserHeaderComponent() {
     const [openLang, setOpenLang] = useState(false);
     const refLang = useRef(null);
@@ -69,26 +108,7 @@ export default function UserHeaderComponent() {
                     </div>
                 </Link>
             </div>
-            <nav className="hidden md:flex flex-1 justify-center gap-6 text-sm min-w-0">
-                <Link
-                    className="transition-colors duration-200 relative text-foreground font-semibold after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:w-full hover:after:w-full"
-                    to="/"
-                >
-                    Trang Chủ
-                </Link>
-                <Link
-                    className="font-medium transition-colors duration-200 relative text-foreground/60 hover:text-foreground/80 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:w-0 hover:after:w-full"
-                    to="/product"
-                >
-                    Sản phẩm của Napas
-                </Link>
-                <a
-                    className="font-medium transition-colors duration-200 relative text-foreground/60 hover:text-foreground/80 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 after:w-0 hover:after:w-full"
-                    href="#"
-                >
-                    Liên hệ
-                </a>
-            </nav>
+            <HeaderLinkPC/>
             <div className="flex items-center gap-2 justify-end min-w-0">
                 <div className="relative" ref={refLang}>
                     <button

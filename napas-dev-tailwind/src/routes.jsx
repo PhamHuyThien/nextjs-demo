@@ -4,6 +4,7 @@ import UserLayout from './layouts/user.layout.jsx'
 import AdminLayout from './layouts/admin.layout.jsx'
 
 import HomePage from './pages/user/home/home.page.jsx'
+import ProductPage from './pages/user/product/product.page.jsx'
 import NotFoundPage from './pages/other/not-found/not-found.page.jsx'
 import LoginPage from "./pages/other/login/login.page.jsx";
 
@@ -17,10 +18,10 @@ export const router = createBrowserRouter([
                 index: true, // Đường dẫn là "/"
                 element: <HomePage/>,
             },
-            // {
-            //     path: 'profile', // Đường dẫn là "/profile"
-            //     element: <Profile />,
-            // },
+            {
+                path: 'product', // Đường dẫn là "/profile"
+                element: <ProductPage />,
+            },
         ],
     },
     //--------------------------------------------------------
