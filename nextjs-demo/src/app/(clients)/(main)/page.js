@@ -2,7 +2,7 @@
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {signIn, signOut} from "next-auth/react";
-import {getUser} from "@/services/user.service";
+import {getUser} from "@/app/services/auth-service";
 
 export default function Home() {
     const {
@@ -15,8 +15,10 @@ export default function Home() {
     useEffect(() => {
         getUser().then(user => {
             console.log(user)
+        }).catch(e =>{
+            console.error(e)
         })
-    }, []);
+    }, [text]);
 
     async function loginAction(formData) {
         const email = formData.email;
@@ -25,11 +27,12 @@ export default function Home() {
         try {
             // Gọi signIn của Server. Thằng này sẽ tự động chạy callback jwt, session
             // và redirect dựa trên những gì ta cấu hình hoặc xử lý tiếp theo.
-            await signIn("credentials", {
+             await signIn("credentials", {
                 email,
                 password,
                 redirect: false, // Tắt redirect mặc định của NextAuth để tự điều hướng bằng Redirect của Next.js
             });
+            setText("OK")
         } catch (error) {
             if (error instanceof AuthError) {
                 switch (error.type) {
