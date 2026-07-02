@@ -1,10 +1,12 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import {db} from "@/app/_databases";
+import {users} from "@/app/_databases/schema";
+import {eq} from "drizzle-orm";
+import logger from "@/app/_utils/logger";
+import {getServerSession} from "next-auth/next";
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -14,22 +16,16 @@ export const authOptions = {
             },
             async authorize(credentials) {
                 if (!credentials?.email || !credentials?.password) return null;
-
-
-                const u  ={user: 'thien', password: '123', role: 'admin', email: 'thien@gmail.com'};
                 try {
-                    // Lấy user từ database bằng Drizzle
-                    // const res = await db.select().from(users).where(eq(users.email, credentials.email)).limit(1);
-                    // const user = res[0];
-                    //
-                    // Kiểm tra password (Demo so sánh trực tiếp, thực tế nên dùng bcrypt để so sánh)
-                    // if (user && user.password === credentials.password) {
-                    if (credentials.email === u.user && u.password === credentials.password) {
-                        return u;
+                    const res = await db.select().from(users)
+                        .where(eq(users.email, credentials.email))
+                        .limit(1);
+                    const user = res?.[0];
+                    if (user && user.password === credentials.password) {
+                        return {name: user.name, email: user.email, role: user.role, createAt: user.createAt};
                     }
                 } catch (error) {
-                    console.error("Auth Error:", error);
-                    return null;
+                    logger.error("Error while authorizing", error);
                 }
                 return null;
             }
@@ -60,7 +56,7 @@ export const authOptions = {
     secret: process.env.NEXTAUTH_SECRET, // Biến môi trường secret trong v4
 };
 
-const handler = NextAuth(authOptions);
+export const getSession = async () => await getServerSession(authOptions);
 
-// NextAuth v4 yêu cầu export các method dưới dạng này trong App Router
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

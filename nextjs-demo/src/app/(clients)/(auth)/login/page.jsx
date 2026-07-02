@@ -1,11 +1,15 @@
 "use client"
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import {useForm} from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
-import toast from 'react-hot-toast';
+import {Eye, EyeOff, Lock, Mail} from 'lucide-react';
 import Link from "next/link";
+import {signIn, signOut} from "next-auth/react";
+import {useApp} from "@/app/(clients)/_providers/app-provider";
+import toast from "react-hot-toast";
+import {useRouter} from "next/navigation";
+import {getUser} from "@/app/_actions/auth-action";
 
 // 1. Định nghĩa Schema Validate bằng Zod
 const loginSchema = z.object({
@@ -16,7 +20,8 @@ const loginSchema = z.object({
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = React.useState(false);
-
+    const {showLoading, hideLoading, login} = useApp();
+    const router = useRouter();
     // 2. Khởi tạo react-hook-form
     const {
         register,
@@ -33,10 +38,30 @@ export default function LoginPage() {
 
     // 3. Hàm xử lý khi Submit thành công
     const onSubmit = async (data) => {
-        // Giả lập gọi API login
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log("Dữ liệu đăng nhập:", data);
-        toast.success("Đăng nhập thành công! (Check console log)");
+        try {
+            showLoading();
+            const result = await signIn("credentials", {
+                email: data.email,
+                password: data.password,
+                redirect: false,
+            });
+            if (!result.ok) {
+                return toast.error(`Tài khoản hoặc mật khẩu không đúng (${result.error})`);
+            }
+            const user = await getUser();
+            if (!user) {
+                await signOut();
+                return toast.error("Có lỗi xảy ra vui lòng thử lại sau (UserNotFound)");
+            }
+            login(user);
+            toast.success("Đăng nhập thành công");
+            router.push('/');
+        } catch (error) {
+            toast.error("Có lỗi xảy ra, vui lòng thử lại");
+            console.error(error);
+        } finally {
+            hideLoading();
+        }
     };
 
     return (

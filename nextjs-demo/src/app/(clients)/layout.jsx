@@ -1,5 +1,6 @@
 import './globals.css'; // Tailwind CSS
-import {AppProvider} from '@/app/(clients)/contexts/app-context';
+import AppInitializer from "@/app/(clients)/_components/app-initializer";
+import {AppProvider} from "@/app/(clients)/_providers/app-provider";
 
 export const metadata = {
     title: 'My Awesome App',
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
         <body>
         <AppProvider>
+            <AppInitializer/>
             <div className="min-h-screen bg-base-100">
                 {children}
             </div>

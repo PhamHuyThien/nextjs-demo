@@ -1,5 +1,10 @@
-Lệnh tạo bảng: Để tạo bảng này vào MySQL của bạn, chạy lệnh:  
-`npx drizzle-kit push`
+# drizzle
+- tạo file migration từ schema hiện tại: `npx drizzle-kit generate`
+- apply file SQL đã generate: `npx drizzle-kit migrate`
+- Đẩy schema trực tiếp vào DB, không tạo migration file: `npx drizzle-kit push`
+- Kéo schema từ DB về code: `npx drizzle-kit pull`
+- Mở GUI quản lý DB: `npx drizzle-kit studio`
+- Check xem schema code và migration có lệch nhau không: `npx drizzle-kit check`
 
 # env
 ```.env

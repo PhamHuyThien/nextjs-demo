@@ -8,8 +8,8 @@ import {Eye, EyeOff, Lock, Mail, ShieldCheck, User} from 'lucide-react';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
-import {useApp} from "@/app/(clients)/contexts/app-context";
-import * as AuthService from "@/app/services/auth-service";
+import {useApp} from "@/app/(clients)/_providers/app-provider";
+import * as AuthAction from "@/app/_actions/auth-action";
 
 // 1. Định nghĩa Schema Validate bằng Zod cho Đăng Ký
 const registerSchema = z.object({
@@ -51,7 +51,7 @@ export default function RegisterPage() {
     const onSubmit = async (data) => {
         showLoading();
         try {
-            let response = await AuthService.register(data.email, data.password, data.fullName, data.agreeTerms);
+            let response = await AuthAction.register(data.email, data.password, data.fullName, data.agreeTerms);
             if (response.code !== 200) {
                 return toast.error(response.message);
             }
