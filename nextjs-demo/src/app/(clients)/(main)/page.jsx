@@ -2,27 +2,9 @@
 
 import Link from "next/link";
 import {useApp} from "@/app/(clients)/_providers/app-provider";
-import {useEffect} from "react";
-import {getUser} from "@/app/_actions/auth-action";
 
 export default function Home() {
-    const {user, login, logout} = useApp();
-
-    useEffect(() => {
-        if(!user) return;
-        const interval = setInterval(async () => {
-            if (user) {
-                const newData = await getUser();
-                if (newData.code === 401) {
-                    logout();
-                }
-                if (newData.code === 200) {
-                    login(newData);
-                }
-            }
-        }, 3000);
-        return () => clearInterval(interval);
-    }, [login, logout, user]);
+    const {user} = useApp();
 
     return (
         <div className="space-y-8">
