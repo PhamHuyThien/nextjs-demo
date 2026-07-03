@@ -14,18 +14,13 @@ export default function RequiredOut({children}) {
     useEffect(() => {
         if (user) {
             toast.error("Vui lòng đăng xuất trước!");
-            // Quay lại trang ngay trước đó họ vừa đứng
             router.back();
         } else {
-            // Nếu chưa đăng nhập thì cho phép xem nội dung trang (Login/Register)
             setIsChecking(false);
         }
     }, [user, router]);
-
-    // Trong lúc đang điều hướng quay lại, hiển thị màn hình trống hoặc loading nhẹ
     if (user || isChecking) {
         return <LoadingPage/>;
     }
-
     return <>{children}</>;
 }

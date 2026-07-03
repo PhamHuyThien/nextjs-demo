@@ -1,6 +1,6 @@
 import "server-only";
 
-export const SimpleResp = {
+export const TTResp = {
     valid(message = "Trường dữ liệu không hợp lệ", data = null, code = -1) {
         return {code, message, data};
     },
@@ -15,5 +15,18 @@ export const SimpleResp = {
     },
     forbidden(data = null, message = "Bạn không có quyền truy cập", code = 403) {
         return {code, message, data};
+    },
+    list(pageable, rows, total) {
+        const {pageSize} = pageable;
+        const totalRecords = total || rows.length;
+        const totalPages = Math.ceil(totalRecords / pageSize);
+        return {
+            data: rows,
+            pagination: {
+                ...pageable,
+                totalRecords,
+                totalPages,
+            }
+        }
     }
 }

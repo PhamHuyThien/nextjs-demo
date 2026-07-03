@@ -2,9 +2,23 @@
 
 import Link from "next/link";
 import {useApp} from "@/app/(clients)/_providers/app-provider";
+import {adminGetDashboard} from "@/app/_actions/admin/user-action";
+import toast from "react-hot-toast";
 
 export default function Home() {
     const {user} = useApp();
+
+    async function onClickTestGetDashboardInfo() {
+        try {
+            const res = await adminGetDashboard();
+            if (res.code !== 200) {
+                return toast.error(res.message);
+            }
+            toast.success(res.message);
+        } catch (e) {
+            toast.error("Có lỗi xảy ra, vui lòng thử lại!");
+        }
+    }
 
     return (
         <div className="space-y-8">
@@ -28,6 +42,9 @@ export default function Home() {
                                     <p><strong>Email:</strong> {user.email}</p>
                                     <p><strong>Quyền hạn:</strong> <span
                                         className="badge badge-sm badge-accent">{user.role}</span></p>
+                                </div>
+                                <div className={"mt-5"}>
+                                    <button onClick={onClickTestGetDashboardInfo} className="btn btn-primary btn-sm mt-2">Test API admin</button>
                                 </div>
                             </div>
                         ) : (

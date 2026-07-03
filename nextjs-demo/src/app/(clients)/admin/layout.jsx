@@ -13,17 +13,21 @@ export default function AdminLayout({children}) {
     const {showLoading, hideLoading, logout} = useApp();
 
     const handleLogout = async () => {
-        showLoading();
-        // Giả lập gọi API SignOut / Xóa Cookie
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        logout();
-        hideLoading();
-        toast.success('Đăng xuất thành công!');
-        router.push('/login');
+        try {
+            showLoading();
+            logout();
+            toast.success('Đăng xuất thành công!');
+            router.push('/login');
+        } catch (e) {
+            toast.error('Đăng xuất thất bại!');
+        } finally {
+            hideLoading();
+        }
     };
 
+
     const menuItems = [
-        {name: 'Dashboard Tổng Quan', path: '/dashboard', icon: <LayoutDashboard className="w-5 h-5"/>},
+        {name: 'Dashboard Tổng Quan', path: '/admin', icon: <LayoutDashboard className="w-5 h-5"/>},
         {name: 'Quản Lý Người Dùng', path: '/', icon: <Users className="w-5 h-5"/>}, // Đặt trang chủ main làm danh sách user theo ý bạn
     ];
 

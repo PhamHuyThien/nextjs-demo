@@ -1,15 +1,16 @@
 "use client";
 
 import {useEffect} from "react";
-import {usePathname} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {useApp} from "@/app/(clients)/_providers/app-provider";
 import {useSession} from "next-auth/react";
 import {getUser} from "@/app/_actions/auth-action";
 
 export default function AppInitializer() {
     const {user, login, logout} = useApp();
-    const { data: session, status } = useSession();
+    const {data: session, status} = useSession();
     const pathname = usePathname();
+    const router = useRouter();
 
     useEffect(() => {
         try {
@@ -31,13 +32,13 @@ export default function AppInitializer() {
                 if (newData.code === 401) {
                     logout();
                 }
-                if (newData.code === 200) {
-                    login(newData);
+                if (newData.code === 403) {
+                    router.push('/');
                 }
             }
         }, 3000);
         return () => clearInterval(interval);
-    }, [login, logout, user]);
+    }, [login, logout, router, user]);
 
     return null;
 }

@@ -32,14 +32,12 @@ const authOptions = {
         })
     ],
     callbacks: {
-        // 1. Lưu role vào JWT Token sau khi authorize thành công
         async jwt({ token, user }) {
             if (user) {
                 token.role = user.role;
             }
             return token;
         },
-        // 2. Trả role từ Token về Session để Client/Server lấy được
         async session({ session, token }) {
             if (token && session.user) {
                 session.user.role = token.role;
@@ -48,10 +46,10 @@ const authOptions = {
         }
     },
     pages: {
-        signIn: "/login", // Trang đăng nhập custom của bạn
+        signIn: "/login",
     },
     session: {
-        strategy: "jwt", // Bắt buộc dùng chiến lược JWT cho Credentials Provider
+        strategy: "jwt",
     },
     secret: process.env.NEXTAUTH_SECRET, // Biến môi trường secret trong v4
 };

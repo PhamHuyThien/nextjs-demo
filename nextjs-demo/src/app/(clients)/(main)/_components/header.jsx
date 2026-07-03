@@ -46,7 +46,7 @@ export default function Header() {
                             <div className="divider my-0"></div>
                             <li>
                                 {user.role === "admin" ? (
-                                    <Link href="#" className="text-error font-medium">Bảng điều khiển Admin</Link>
+                                    <Link href="/admin" className="text-error font-medium">Bảng điều khiển Admin</Link>
                                 ) : (
                                     <Link href="#">Bảng điều khiển User</Link>
                                 )}
