@@ -8,9 +8,10 @@ import {userSelect} from "@/app/_databases/select";
 
 export async function getUser(ctx) {
     if (!ctx?.user) return TTResp.unauthorized();
-    const newUser = await db.select(userSelect).from(users).where(eq(users.email, ctx?.user?.email)).limit(1);
-    if (!newUser.length) return TTResp.unauthorized(undefined, 'Tài khoản không tồn tại');
-    return TTResp.success(newUser[0]);
+    const [user] = await db.select(userSelect).from(users).where(eq(users.email, ctx?.user?.email)).limit(1);
+    if (!user) return TTResp.unauthorized(undefined, 'Tài khoản không tồn tại');
+    if (user.status !== 1) return TTResp.unauthorized(undefined, 'Tài khoản đã bị khoá');
+    return TTResp.success(user);
 }
 
 export async function register(ctx, email, password, name, isTerm) {

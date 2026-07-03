@@ -17,11 +17,10 @@ const authOptions = {
             async authorize(credentials) {
                 if (!credentials?.email || !credentials?.password) return null;
                 try {
-                    const res = await db.select().from(users)
+                    const [user] = await db.select().from(users)
                         .where(eq(users.email, credentials.email))
                         .limit(1);
-                    const user = res?.[0];
-                    if (user && user.password === credentials.password) {
+                    if (user && user.status === 1 && user.password === credentials.password) {
                         return {name: user.name, email: user.email, role: user.role, createAt: user.createAt};
                     }
                 } catch (error) {
@@ -32,26 +31,22 @@ const authOptions = {
         })
     ],
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({token, user}) {
             if (user) {
                 token.role = user.role;
             }
             return token;
         },
-        async session({ session, token }) {
+        async session({session, token}) {
             if (token && session.user) {
                 session.user.role = token.role;
             }
             return session;
         }
     },
-    pages: {
-        signIn: "/login",
-    },
-    session: {
-        strategy: "jwt",
-    },
-    secret: process.env.NEXTAUTH_SECRET, // Biến môi trường secret trong v4
+    pages: {signIn: "/login"},
+    session: {strategy: "jwt"},
+    secret: process.env.NEXTAUTH_SECRET,
 };
 
 export const getSession = async () => await getServerSession(authOptions);

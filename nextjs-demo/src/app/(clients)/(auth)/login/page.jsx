@@ -5,7 +5,6 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import {Eye, EyeOff, Lock, Mail} from 'lucide-react';
 import Link from "next/link";
-import {signIn, signOut} from "next-auth/react";
 import {useApp} from "@/app/(clients)/_providers/app-provider";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
@@ -20,7 +19,7 @@ const loginSchema = z.object({
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = React.useState(false);
-    const {showLoading, hideLoading, login} = useApp();
+    const {showLoading, hideLoading, login, logout, setUser} = useApp();
     const router = useRouter();
     // 2. Khởi tạo react-hook-form
     const {
@@ -40,20 +39,11 @@ export default function LoginPage() {
     const onSubmit = async (data) => {
         try {
             showLoading();
-            const result = await signIn("credentials", {
-                email: data.email,
-                password: data.password,
-                redirect: false,
-            });
+            const result = await login(data.email, data.password);
             if (!result.ok) {
                 return toast.error(`Tài khoản hoặc mật khẩu không đúng (${result.error})`);
             }
-            const user = await getUser();
-            if (!user) {
-                await signOut();
-                return toast.error("Có lỗi xảy ra vui lòng thử lại sau (UserNotFound)");
-            }
-            login(user);
+            setUser(result);
             toast.success("Đăng nhập thành công");
             router.push('/');
         } catch (error) {

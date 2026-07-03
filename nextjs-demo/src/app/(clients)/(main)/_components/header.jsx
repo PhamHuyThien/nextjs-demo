@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { signOut } from "next-auth/react"; // Nếu dùng auth v4 client
-import { useApp } from "@/app/(clients)/_providers/app-provider";
+import {useApp} from "@/app/(clients)/_providers/app-provider";
 
 export default function Header() {
-    const { user } = useApp(); // Lấy thông tin user từ context toàn cục của bạn
+    const {user, logout} = useApp(); // Lấy thông tin user từ context toàn cục của bạn
 
     const handleLogout = async () => {
-        // Nếu dùng NextAuth v4, gọi signOut để hủy cookie session và đẩy về login
-        await signOut({ callbackUrl: "/login" });
+        await logout();
     };
 
     return (

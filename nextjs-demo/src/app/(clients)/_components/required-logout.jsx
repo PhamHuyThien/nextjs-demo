@@ -12,13 +12,18 @@ export default function RequiredOut({children}) {
     const [isChecking, setIsChecking] = useState(true);
 
     useEffect(() => {
-        if (user) {
-            toast.error("Vui lòng đăng xuất trước!");
-            router.back();
-        } else {
-            setIsChecking(false);
-        }
+        const timeOut = setTimeout(function () {
+            if (user) {
+                toast.error("Vui lòng đăng xuất trước!");
+                router.back();
+            } else {
+                setIsChecking(false);
+            }
+        }, 500);
+        return () => clearTimeout(timeOut);
     }, [user, router]);
+
+
     if (user || isChecking) {
         return <LoadingPage/>;
     }

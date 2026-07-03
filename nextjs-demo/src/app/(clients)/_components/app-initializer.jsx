@@ -7,7 +7,7 @@ import {useSession} from "next-auth/react";
 import {getUser} from "@/app/_actions/auth-action";
 
 export default function AppInitializer() {
-    const {user, login, logout} = useApp();
+    const {user, login, logout, setUser} = useApp();
     const {data: session, status} = useSession();
     const pathname = usePathname();
     const router = useRouter();
@@ -15,13 +15,13 @@ export default function AppInitializer() {
     useEffect(() => {
         try {
             if (session?.user) {
-                login(session.user);
+                setUser(session.user);
             }
         } catch (error) {
             logout();
             console.error("fetchUser error", error);
         }
-    }, [session, pathname, status, login, logout]);
+    }, [session, pathname, status, logout, setUser]);
 
 
     useEffect(() => {
